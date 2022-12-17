@@ -1,2 +1,160 @@
-Hello World!
-Yes
+<!doctype html>
+
+<html lang="en"> 
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Zachary Kennedy | Engineer, Software Developer, Space Enthusiast</title>
+    <meta name="description" content="Zachary Kennedy Web Portfolio">
+    <meta name="keywords" content="Zachary Kennedy Weber State University">
+    <meta name="author" content="Zachary Kennedy">
+
+    <link href="styles/my_stylesheet.css" rel="stylesheet"/>
+    <link href="styles/index_style.css" rel="stylesheet"/>
+    <script src="scripts/formsubmit.js"></script>
+
+</head>
+
+<body>
+    <header id="pageheader">
+        <img src="images/banner4.jpg" alt="Zachary Banner">
+  
+        <nav class="navbar">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="research.html">Research & Projects</a></li>
+            <li><a href="websites/index.html">CS 2350 Webpage</a></li>
+          </ul>
+      </nav> 
+    </header>
+
+    <article>
+
+
+        <h1 id="me_h1">Me</h1>
+
+        <img src="images/me1.jpg" alt="Picture of me" id="me" />
+
+        <p>
+            My name's Zachary Kennedy, but you can just call me Zack! I'm 20 years old, and a student of Astrophysics at <a href="https://weber.edu/" target="_blank">Weber State University</a> in Ogden, Utah.
+            I'm a big ethusiast of space, technology, and adventure! I first started programming when I was 12 years old, and was self taught through YouTube Videos.
+            When I was young, I was engrossed by video games, and wanted to be a video game programmer. As I matured, I found my true calling with my facination of Space,
+            and humankind's exploration of the stars!     
+        </p>
+        
+        <p>
+            When I'm not busy doing schoolwork or spending time with family or girlfriend, I'm usually working or participating in a number of research activities.
+            I'm currently employed by Weber State University as a Telescope Operator, and I operate the KTPO Remote Telescope atop of Tracy Hall at Weber State.
+            My responsibillites include taking hundreds of exposure images of asteroids or stars, then performing aperature photometry on those to get data that can
+            be used to make light curves or finding the periods of Asteroids. 
+        </p>
+
+        
+
+        <h1 id="research_h1"> Featured Research </h1>
+
+        <div id="harbor">
+
+        <h3>HARBOR</h3>
+
+        <img src="images/HARBOR_DRONE_Flight.jpg" alt="HARBOR drone flight"/>
+
+        <p>
+            In addition to my duties as a telescope operator, I'm also a member of <a href="https://harbor.weber.edu/" target="_blank">HARBOR</a>, Weber State's high altitude atmosphereic balloon team. We launch high altitude balloons
+            carrying instruments to measure the atmosphere in and around Utah. Besides participating in our balloon launches, I'm also a key memeber of our hardware development team.
+            More specifically, the creation and assembly of the MSA (formally known as the mini-MSA). I worked closely on the software of the MSA. You can read more about it <a href="msa.html">here</a>. 
+        </p>
+
+        
+
+        </div>
+
+        <div id="exo">
+
+        <h3>Exoplanet Research</h3>
+
+        <img src="images/exoplanets.jpg" alt="Exoplanets"/>
+
+        <p>
+            I'm also doing exoplanet research this summer, running simulations on potentially habitable exoplanets from NASA's exoplanet database. I created software to aid me in the research.
+            My research is funded by a grant from Weber State's <a href="https://www.weber.edu/cos/researchawards.html" target="_blank">undergraduate research awards</a>. You can read more about my research <a href="#">here</a>. 
+        </p>
+
+        <br><br><br><br><br>
+
+
+        </div>
+
+        
+
+    </article>
+
+    <article id="container">
+
+        <form 
+        id="contactMe" 
+        action="index.html"
+        method="POST"
+        >
+
+        <h1>Contact me</h1>
+
+
+    <div id="contact">
+
+        <p>
+            Want to get in touch? Contact me here!
+         </p>
+
+        <form action="" >
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John">
+        
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Smith">
+        
+            <label for="email">Email Address</label> 
+            <input id="email" type="email" name="IDemail" placeholder="johnsmith@gmail.com"> 
+        
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        
+            <input type="submit" value="Submit">
+        
+        </form>
+
+    </div>
+
+    </article>
+
+
+    <footer>
+        <address>
+          Zachary Kennedy &copy; 2021
+        </address>
+      </footer>
+</body>
+
+</html>
+
+
+<!----
+
+    References:
+
+    Exoplanet Image - https://www.gps.caltech.edu/gps-research/research-programs/planetary-research-option/research-areas/exoplanets-planetary-astronomy
+
+    Banner Rocketship Icon - https://www.iconfinder.com/icons/457053/fly_moon_rocket_ship_space_icon
+
+    Vplanet Logo - https://github.com/VirtualPlanetaryLaboratory/vplanet
+
+    MSA Image Diagram - Dr. John Sohl
+
+    MSA Housing Blueprints - Huiling Renee Xie
+
+
+
+-->

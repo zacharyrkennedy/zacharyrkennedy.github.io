@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+@font-face {
+   font-family: Oswald;
+   src: url(../fonts/Oswald-Regular.ttf) format('truetype');
+}
+
+
+/* HTML and Body Styles */
+html {
+   width:65%;
+   height: 100%;
+   margin-left: 17.5%;
+   margin-right: 17.5%;
+   
+}
+body {
+   background: url(../images/spacebackground.jpg) repeat;
+   background-color: white;
+   font-family: 'Century Gothic', sans-serif, Oswald;
+   margin-left: auto;
+   margin-right: auto;
+
+}
+
+
+
+/* Heading Styles */
+
+header img {
+   width: 100%;
+   display: block;
+
+}
+
+/* Article Styles */
+article {
+   background-color: white;
+   display: inline-block;
+   width: 95%;
+   height: 100%;
+   padding-left: 2.5%;
+   padding-right: 2.5%;
+   font-size: 1.1em;
+   
+
+}
+
+article img {
+   width: 25%;
+   height: 25%;
+}
+
+article h1 {
+   display: inline-block;
+   text-shadow: 2px 3px rgb(65,105,225);
+   border-bottom: 2px solid black;
+   text-align: center;
+   margin-left: 2.5%;
+   margin-right: 2.5%;
+   width: 95%;
+}
+
+
+/* Navigation Menu Styles */
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding-left: 30%;
+   overflow: hidden;
+   background-color: rgb(65,105,225);
+ }
+ 
+ nav ul li {
+   float: left;
+ }
+ 
+ nav ul li a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+ }
+
+ nav ul li a:hover {
+   background-color: white;
+   color: black;
+ }
+
+ nav ul li a:active{
+   background-color: gray;
+ }
+
+
+
+/* Footer Style */
+footer {
+   background: linear-gradient(white, rgb(65,105,225) 20%);
+   padding-top: 8px;
+   padding-bottom: 8px;
+
+
+}
+
+footer > address {
+
+   font-family: 'Century Gothic', Courier, monospace;
+   color: white;
+   font-size: 0.9em;
+   text-align: center;
+   padding-top: 30px;
+   padding-bottom: 30px;
+
+
+}
+

@@ -1,0 +1,97 @@
+
+/* Default Style for Images */
+img {
+    border: 3px solid black;
+    border-radius: 5%;
+}
+
+/* Style for MSA Team image */
+#MSA_TEAM {
+    max-width : 35%;
+    filter : saturate(105%);
+    float : left;
+    padding : 0;
+    margin : 30px 30px 30px 15px;
+    }
+
+/* Style for MSA1 images */
+#MSA1 {
+    width:40%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+/* Style for MSA diagram images */
+#MSA_diagram {
+    float: right;
+    width: 40%;
+    height: auto;
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 10px;
+    border: none;
+}
+
+
+/* Video / Poster Iframe styles */
+
+iframe {
+    float: right;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    border: 3px solid black;
+    border-radius: 5%;
+}
+
+.posters iframe {
+    width: 47%;
+    height: 600px;
+}
+
+
+/* <h3> section styles */
+#h3_softwareText {
+    margin-top: 6%;
+}
+
+#h3_introText {
+    text-align: center;
+}
+
+#h3_housingText {
+    margin-top: 10%;
+    text-align: center;
+}
+
+#h3_presentationText {
+    margin-top: 8%;
+    text-align: center;
+}
+
+
+/* <p> section styles */
+#MSA_housing {
+    float: left;
+    width: 40%;
+    height: auto;
+    margin-top: 6%;
+    margin-right: 3%;
+    border: none;
+
+}
+
+#housingText {
+    margin-bottom: 5%;
+}
+
+#presentationText {
+    width: 100%;
+    text-align: center;
+}
+
+
