@@ -11,7 +11,7 @@
     <meta name="author" content="Zachary Kennedy">
 
     <link href="styles/my_stylesheet.css" rel="stylesheet"/>
-    <link href="styles/msa_style.css" rel="stylesheet"/>
+    <link href="styles/rocketSim_style.css" rel="stylesheet"/>
 
 </head>
 
@@ -24,7 +24,6 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="resume.html">Resume</a></li>
             <li><a href="research.html">Research & Projects</a></li>
-            <li><a href="websites/index.html">CS 2350 Webpage</a></li>
           </ul>
       </nav> 
     </header>
@@ -34,81 +33,27 @@
 
         <h1 id="me_h1">Planetary Rocket Simulation</h1>
 
-        <img src="images/MSA1.jpg" alt="Tuperware MSA" id="MSA1"/>
-
-
-        <img src="images/MSA_Team.jpg" alt="Tuperware MSA" id="MSA_TEAM"/>
-
-        <h3 id="h3_introText"><br> Project Members </h3>
-
-        <p id="introText">
-            In January of 2020, I began working on a miniature multi-sensor array (mini-MSA) for my HARBOR research group. I was one of three individuals working on the project. I mainly
-            worked on the software/sensor side of things. Drew Huber, our electrical engineering major worked on the soldering for the battery powerboard and the wire connectors, and occasionally
-            software. Huiling Renee Xie, our mechanical engineering major worked on the housing for the project. The three of us were supervised by Dr. John Sohl and given occasional advice
-            by Sohl and Jeffery Page.
+        <h2>Overview</h2>
+        <p>
+          During my Spring 2021 Semester at Weber State, I took a course called <a href="https://catalog.weber.edu/preview_course_nopop.php?catoid=12&coid=49526"><em>PHYS 2300 - Scientific Computing</em></a>. In this course, we programmed simulations of physical systems, 
+          such as projectile motion, pendulums, orbits, and molecular dynamics. The course was comprised of six different programming projects, and a final project. 
+          
+          <br><br> For the final project, we were tasked with picking a physical system of our choosing to simulate. 
+          Naturally, I decided to program a rocket launch off of a planetary body. The video below is my class video presentation on my project. In the video, I go over some of the physics behind the
+          simulation, and also show the simulation in action. If you're more interested in the simulation itself, I've detailed the important stuff below, and you can skip the video.  
         </p>
 
-        <img src="images/MSA_figure.PNG" alt="MSA diagram" usemap="#image-map" id="MSA_diagram"/>
-
-        <map name="image-map">
-          <area target="_blank" alt="Winsen" title="Winsen" href="https://www.winsen-sensor.com/sensors/co2-sensor/zphs01b.html" coords="19,13,228,104" shape="rect">
-          <area target="_blank" alt="RPI" title="RPI" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/" coords="279,134,479,244" shape="rect">
-          <area target="_blank" alt="GPS" title="GPS" href="https://www.sparkfun.com/products/15210" coords="78,168,183,223" shape="rect">
-        </map>
-
-        <h3><br><br>MSA Overview </h3>
-
-        <p id="overviewText">
-          The MSA (formally known as the mini-MSA) was created with the intention of making a sensing device that was both cheap and uniform. Currently, many measurements made of the atmosphere across the United
-          States (and the world really) aren't really uniform because everyone is using different devices which are all calibrated differently. We hope with the MSA that issue will be mostly solved by making a cheap,
-          but accesssible device for everyone.
-          <br><br>
-          The MSA itself is comprised of a Raspberry Pi 3 B+, a custom made external powerboard, a winsen multi-sensor unit, and a custom made housing. The Raspberry Pi hosts the Python written software that runs and controls MSA. 
-        </p>
+      
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dwfUDgMbuq0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h2>Considerations for the Simulation</h2>
 
 
-        <iframe width="460" height="315" src="https://www.youtube.com/embed/R2ZtUN3bT3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        <h3 id="h3_softwareText"><br> MSA Software </h3>
-
-        <p class="softwareText">
-            Developing the software for the MSA really pushed my python programming skills to the limit. I had to learn UART serial in order to translate the bytes into readable data from the sensors. <br><br> Then, we had
-            to solve the problem of actually running the script while the Raspberry Pi wasn't connected to a monitor and keyboard. I ultimately decided on setting up the Raspberry Pi as a WiFi access point,
-            and then having it host a flask webserver which hosted a basic html website. On that website, you could click the "Start" button which would run the data collection script. Additionally,
-            I added buttons for stopping the data collection, and downloading the data from the Raspberry Pi. 
-        </p>
-
-
-        <img src="images/msa_housing.png" alt="MSA housing" id="MSA_housing"/>
-
-        <h3 id="h3_housingText"><br> MSA Housing </h3>
-
-        <p id="housingText">
-            Renee worked on the housing until she graduated in Spring 2021. We never got a fully functioning housing before she left, just a few prototypes that were screwed up by the 3D printer.
-            A housing is still being worked on by another individual, but for now we've resorted to the plastic tuperware housing that you see in the picture at the top of the page. <br><br> <br>
-        </p>
-
-
-        <h3 id="h3_presentationText">MSA Presentations</h3>
-        <p id="presentationText">
-          Our team did two presentations this spring for the MSA. One for the <b>Air Quality Science For Solutions Conference</b> and another for the <b>NASA Space Grant Consortium</b>. <br><br>
-          Air Quality Science for Solutions on the right. NASA Space Grant Consortium on the left.
-        </p>
-
-        <div class="posters">
-
-        <iframe src="files/AirQualityScienceForSolutions_MSA_POSTER.pdf"></iframe>
-
-        <iframe src="files/NASAUtahSpaceGrantConsortiumMini_MSA_Poster.pdf#toolbar=1"></iframe>
-
-        </div>
-
+        <iframe id="RocketSim" src="RocketLaunch.html" width="1060" height="1020"></iframe>
+        
         <p style="text-align: center;">
           <a href="research.html"> Click here to go back </a>
         </p>
-        
-
-
 
 
     </article>

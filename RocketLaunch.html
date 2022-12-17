@@ -1,0 +1,507 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.1.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.1.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var running, exhaustVelocity, vy, FalconMass, y, t, Gravity, MarsRadius, PlanetRadius, Planet, rocket_color, rocket, rocket_cone, PlanetMass, EarthRadius, MoonRadius, airDensity, dy, ax, ay, at, ag, r, G, totalFuel;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, EarthMass, EarthRadius, MarsMass, MarsRadius, MoonMass, MoonRadius, FalconMass, fuelburnRate, exhaustVelocity, G, dragConst, run_speed, t, dt, running, Planet, rocket_color, groundColor, vy, y, x, h, rocketPad, ground, rocket, rocket_cone, Instructions, RocketStatistics, VelocityReadout, AccelerationReadout, AltitudeReadout, totalMassReadout, PlanetInfoReadout, PlanetReadout, PlanetMassReadout, RadiusReadout, exhaustVelocitySlider, exhaustVelocitySliderReadout, totalFuelSlider, totalFuelSliderReadout, rateSlider, rateSliderReadout, VelocityVsTime, AccelerationVsTime, vyDots, ayDots, rateRatio, text, r, ymid, rmid, vymid, aymid;
+    version = ρσ_list_decorate([ "3.1", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "14";
+    EarthMass = 5.97e24;
+    "15";
+    EarthRadius = 6371e3;
+    "17";
+    MarsMass = 6.39e23;
+    "18";
+    MarsRadius = 3389e3;
+    "20";
+    MoonMass = 7.34e22;
+    "21";
+    MoonRadius = 1737e3;
+    "24";
+    FalconMass = 433100;
+    "25";
+    fuelburnRate = 14e3;
+    "26";
+    exhaustVelocity = 2400;
+    "29";
+    G = 6.67e-11;
+    "30";
+    dragConst = .5;
+    "31";
+    exhaustVelocity = 2400;
+    "34";
+    run_speed = 200;
+    "35";
+    t = 0;
+    "36";
+    dt = .01;
+    "37";
+    running = false;
+    "38";
+    Planet = " ";
+    "39";
+    rocket_color = color.white;
+    "40";
+    groundColor = color.green;
+    "41";
+    vy = 0;
+    "42";
+    y = 1;
+    "43";
+    x = 0;
+    "44";
+    h = 1;
+    "47";
+    async function Play() {
+        "48";
+        "50";
+        exhaustVelocity = exhaustVelocitySlider.value;
+        "52";
+        if ((running === true || typeof running === "object" && ρσ_equals(running, true))) {
+            "53";
+            running = false;
+            "54";
+        } else {
+            "55";
+            running = true;
+        }
+    };
+    if (!Play.__module__) Object.defineProperties(Play, {
+        __module__ : {value: null}
+    });
+
+    "58";
+    async function Reset() {
+        var ρσ_ls, ay, running;
+        "59";
+        "62";
+        y = 1;
+        "63";
+        FalconMass = 22200["+"](totalFuelSlider.value);
+        "64";
+        rocket.pos.y = y;
+        "65";
+        rocket_cone.pos.y = rocket.pos.y["+"](2e3);
+        "66";
+        vy = 0;
+        "67";
+        ay = 0;
+        "68";
+        t = 0;
+        "69";
+        vyDots.remove();
+        "70";
+        ayDots.remove();
+        "71";
+        scene.camera.follow(rocket);
+        "74";
+        running = false;
+    };
+    if (!Reset.__module__) Object.defineProperties(Reset, {
+        __module__ : {value: null}
+    });
+
+    "77";
+    async function Mars() {
+        var ρσ_ls, groundColor, skyColor;
+        "78";
+        "81";
+        if ((running === false || typeof running === "object" && ρσ_equals(running, false))) {
+            "82";
+            Planet = "Mars";
+            "83";
+            rocket_color = color.purple;
+            "84";
+            rocket.color = rocket_color;
+            "85";
+            rocket_cone.color = rocket_color;
+            "86";
+            groundColor = vec(1, .5, 0);
+            "87";
+            ground.color = groundColor;
+            "88";
+            skyColor = vec(1, .7, 0);
+            "90";
+            PlanetRadius = MarsRadius;
+            "91";
+            PlanetMass = MarsMass;
+            "93";
+            scene.background = skyColor;
+        }
+    };
+    if (!Mars.__module__) Object.defineProperties(Mars, {
+        __module__ : {value: null}
+    });
+
+    "97";
+    async function Earth() {
+        var ρσ_ls, groundColor, skyColor;
+        "98";
+        "101";
+        if ((running === false || typeof running === "object" && ρσ_equals(running, false))) {
+            "102";
+            Planet = "Earth";
+            "103";
+            rocket_color = color.red;
+            "104";
+            rocket.color = rocket_color;
+            "105";
+            rocket_cone.color = rocket_color;
+            "107";
+            groundColor = vec(0, 1, 0);
+            "108";
+            ground.color = groundColor;
+            "109";
+            skyColor = vec(0, 0, 1);
+            "112";
+            PlanetRadius = EarthRadius;
+            "113";
+            PlanetMass = EarthMass;
+            "116";
+            scene.background = skyColor;
+        }
+    };
+    if (!Earth.__module__) Object.defineProperties(Earth, {
+        __module__ : {value: null}
+    });
+
+    "119";
+    async function Moon() {
+        var ρσ_ls, groundColor, skyColor;
+        "120";
+        "123";
+        if ((running === false || typeof running === "object" && ρσ_equals(running, false))) {
+            "124";
+            Planet = "The Moon";
+            "125";
+            rocket_color = color.white;
+            "126";
+            rocket.color = rocket_color;
+            "127";
+            rocket_cone.color = rocket_color;
+            "128";
+            groundColor = vec(.7, .7, .7);
+            "129";
+            ground.color = groundColor;
+            "130";
+            skyColor = vec(0, 0, 0);
+            "132";
+            PlanetRadius = MoonRadius;
+            "133";
+            PlanetMass = MoonMass;
+            "135";
+            scene.background = skyColor;
+        }
+    };
+    if (!Moon.__module__) Object.defineProperties(Moon, {
+        __module__ : {value: null}
+    });
+
+    "138";
+    async function airDensityCalc(h) {
+        var ρσ_ls, pb;
+        "139";
+        "141";
+        pb = .1322;
+        "144";
+        if ((Planet === "Earth" || typeof Planet === "object" && ρσ_equals(Planet, "Earth"))) {
+            "145";
+            airDensity = pb["*"](exp(.28404373["-u"]()["*"](h["-"](32e3))["/"](1901.101)));
+            "147";
+        }
+        if ((Planet === "Mars" || typeof Planet === "object" && ρσ_equals(Planet, "Mars"))) {
+            "150";
+            airDensity = pb["*"](exp(.28404373["-u"]()["*"](h["-"](32e3))["/"](1901.101)))["*"](.01);
+            "152";
+        }
+        if ((Planet === "The Moon" || typeof Planet === "object" && ρσ_equals(Planet, "The Moon"))) {
+            "155";
+            airDensity = 0;
+        }
+        "157";
+        return airDensity;
+    };
+    if (!airDensityCalc.__argnames__) Object.defineProperties(airDensityCalc, {
+        __argnames__ : {value: ["h"]},
+        __module__ : {value: null}
+    });
+
+    "160";
+    async function dragForce() {
+        "161";
+        "164";
+        dy = dragConst["*"](airDensity)["*"](vy["**"](2))["/"](FalconMass);
+        "166";
+        return dy;
+    };
+    if (!dragForce.__module__) Object.defineProperties(dragForce, {
+        __module__ : {value: null}
+    });
+
+    "169";
+    async function acceleration(m, r) {
+        "170";
+        "173";
+        ag = G["*"](m)["/"](r["*"](r));
+        "176";
+        at = fuelburnRate["*"](exhaustVelocity)["/"](FalconMass);
+        "179";
+        if (FalconMass["<="](22200)) {
+            "180";
+            at = 0;
+        }
+        "183";
+        ay = at["-"](ag)["-"](dy);
+        "186";
+        if (FalconMass[">="](22200)) {
+            "187";
+            FalconMass=FalconMass["-"](fuelburnRate["*"](dt));
+        }
+        "189";
+        return ay;
+    };
+    if (!acceleration.__argnames__) Object.defineProperties(acceleration, {
+        __argnames__ : {value: ["m", "r"]},
+        __module__ : {value: null}
+    });
+
+    "196";
+    rocketPad = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vec(0, 0, 0), size: vec(3e3, 1, 3e3), color: color.white})]);
+    "197";
+    ground = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(0, 0, 0), size: vector(15e3, .1, 15e3), color: groundColor})]);
+    "198";
+    rocket = ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vec(x, y, 0), radius: 200, axis: vec(0, 2e3, 0), color: rocket_color})]);
+    "199";
+    rocket_cone = ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({pos: vec(x, y["+"](2e3), 0), radius: 200, axis: vec(0, 1e3, 0), color: rocket_color})]);
+    "202";
+    scene.camera.follow(rocket);
+    "205";
+    (await Earth());
+    "208";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Launch/Freeze", bind: Play})]);
+    "209";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Reset", bind: Reset})]);
+    "210";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Earth", bind: Earth})]);
+    "211";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Moon", bind: Moon})]);
+    "212";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Mars", bind: Mars})]);
+    "215";
+    Instructions = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: " \n\n <b> Instructions: <\/b> Choose the celestial body you would like to launch from, you can also reset or freeze the simulation at anytime. \n In order for fuel amount changes to take effect, you have to reset the simulation."})]);
+    "216";
+    RocketStatistics = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: " \n\n\n\b <b> Rocket Stats </b>"})]);
+    "217";
+    VelocityReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Velocity: "["+"](vy)["+"](" m/s")})]);
+    "218";
+    AccelerationReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Acceleration: "["+"](ay)["+"](" m/s^2")})]);
+    "219";
+    AltitudeReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Altitude: "["+"](rocket.pos.y["/"](1e3))["+"](" km")})]);
+    "220";
+    totalMassReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Rocket Mass: "["+"](FalconMass)["+"](" kg")})]);
+    "221";
+    PlanetInfoReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: " \n\n\b <b> Celestial Body Information </b>"})]);
+    "222";
+    PlanetReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Celestial Body: "["+"](Planet)})]);
+    "223";
+    PlanetMassReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Celestial Mass: "["+"](PlanetMass)["+"](" kg")})]);
+    "224";
+    RadiusReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "  \n Celestial Body Radius: "["+"](PlanetRadius)["+"](" m")})]);
+    "228";
+    async function AdjustExhaustVelocity() {
+        "229";
+        exhaustVelocitySliderReadout.text = exhaustVelocitySlider.value["+"](" m/s");
+    };
+    if (!AdjustExhaustVelocity.__module__) Object.defineProperties(AdjustExhaustVelocity, {
+        __module__ : {value: null}
+    });
+
+    "233";
+    scene.append_to_caption("\n\n\n");
+    "234";
+    exhaustVelocitySlider = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({left: 10, min: 2e3, max: 29e3, step: 500, value: 2500, bind: AdjustExhaustVelocity})]);
+    "235";
+    scene.append_to_caption("    Exhaust Velocity = ");
+    "236";
+    exhaustVelocitySliderReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "2500 m/s"})]);
+    "238";
+    async function AdjustTotalFuel() {
+        "239";
+        totalFuelSliderReadout.text = totalFuelSlider.value["+"](" kg");
+    };
+    if (!AdjustTotalFuel.__module__) Object.defineProperties(AdjustTotalFuel, {
+        __module__ : {value: null}
+    });
+
+    "243";
+    scene.append_to_caption("\n\n\n\n");
+    "244";
+    totalFuelSlider = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({left: 10, min: 2e4, max: 5e5, step: 2500, value: FalconMass["-"](22200), bind: AdjustTotalFuel})]);
+    "245";
+    scene.append_to_caption("    Total Fuel = ");
+    "246";
+    totalFuelSliderReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "410900 kg"})]);
+    "249";
+    async function AdjustRate() {
+        "250";
+        rateSliderReadout.text = rateSlider.value["+"]("x");
+    };
+    if (!AdjustRate.__module__) Object.defineProperties(AdjustRate, {
+        __module__ : {value: null}
+    });
+
+    "254";
+    scene.append_to_caption("\n\n\n\n\n");
+    "255";
+    rateSlider = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({left: 10, min: 1, max: 3, step: 1, value: 1, bind: AdjustRate})]);
+    "256";
+    scene.append_to_caption("    Simulation Speed: = ");
+    "257";
+    rateSliderReadout = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "1x"})]);
+    "260";
+    VelocityVsTime = ρσ_interpolate_kwargs.call(this, graph, [ρσ_desugar_kwargs({width: 600, height: 375, title: "Velocity vs Time", xtitle: "<i>Time (s) </i>", ytitle: "<i>Velocity (m/s) </i>", background: color.white, align: "right"})]);
+    "266";
+    AccelerationVsTime = ρσ_interpolate_kwargs.call(this, graph, [ρσ_desugar_kwargs({width: 600, height: 375, title: "Altitude vs Time", xtitle: "<i>Time (s) </i>", ytitle: "<i>Altitude (m) </i>", background: color.white, align: "right"})]);
+    "273";
+    vyDots = ρσ_interpolate_kwargs.call(this, gdots, [ρσ_desugar_kwargs({graph: VelocityVsTime, color: color.green, interval: 20})]);
+    "274";
+    ayDots = ρσ_interpolate_kwargs.call(this, gdots, [ρσ_desugar_kwargs({graph: AccelerationVsTime, color: color.green, interval: 20})]);
+    "277";
+    while (true) {
+        "278";
+        (await rate(run_speed["*"](rateRatio)));
+        "279";
+        rateRatio = rateSlider.value;
+        "281";
+        VelocityReadout.text = text = "  \n Velocity: "["+"](vy)["+"](" m/s");
+        "282";
+        AccelerationReadout.text = text = "  \n Acceleration: "["+"](ay)["+"](" m/s^2");
+        "283";
+        AltitudeReadout.text = text = "  \n Altitude: "["+"](rocket.pos.y["/"](1e3))["+"](" km");
+        "284";
+        totalMassReadout.text = text = "  \n Rocket Mass: "["+"](FalconMass)["+"](" kg");
+        "285";
+        PlanetReadout.text = text = "  \n Celestial Body: "["+"](Planet);
+        "286";
+        PlanetMassReadout.text = text = "  \n Celestial Mass: "["+"](PlanetMass)["+"](" kg");
+        "287";
+        RadiusReadout.text = text = "  \n Celestial Body Radius: "["+"](PlanetRadius)["+"](" m");
+        "291";
+        if ((running === true || typeof running === "object" && ρσ_equals(running, true))) {
+            "294";
+            (await airDensityCalc(rocket.pos.y));
+            "297";
+            (await dragForce());
+            "300";
+            r = PlanetRadius["+"](y);
+            "303";
+            (await acceleration(PlanetMass, r));
+            "305";
+            ymid = y["+"](vy["*"](.5)["*"](dt));
+            "308";
+            (await airDensityCalc(ymid));
+            "309";
+            (await dragForce());
+            "312";
+            rmid = PlanetRadius["+"](ymid);
+            "314";
+            vymid = vy["+"](ay["*"](.5)["*"](dt));
+            "317";
+            (await acceleration(PlanetMass, rmid));
+            "319";
+            aymid = at["-"](ag)["-"](dy);
+            "321";
+            y=y["+"](vymid["*"](dt));
+            "322";
+            vy=vy["+"](aymid["*"](dt));
+            "324";
+            t=t["+"](dt);
+            "325";
+            vyDots.plot(t, vy);
+            "326";
+            ayDots.plot(t, rocket.pos.y);
+            "329";
+            if (y[">="](0)) {
+                "330";
+                rocket.pos.y = y;
+                "331";
+                rocket_cone.pos.y = rocket.pos.y["+"](2e3);
+                "332";
+            } else {
+                "333";
+                rocket.pos.y = 0;
+                "334";
+                vy = 0;
+                "335";
+                rocket_cone.pos.y = rocket.pos.y["+"](2e3);
+            }
+        }
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
