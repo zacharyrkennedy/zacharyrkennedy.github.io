@@ -93,11 +93,6 @@
 
     <article id="container">
 
-        <form 
-        id="contactMe" 
-        action="index.html"
-        method="POST"
-        >
 
         <h1>Contact me</h1>
 
@@ -108,24 +103,25 @@
             Want to get in touch? Contact me here!
          </p>
 
-        <form action="" >
-
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John">
-        
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Smith">
-        
-            <label for="email">Email Address</label> 
-            <input id="email" type="email" name="IDemail" placeholder="johnsmith@gmail.com"> 
-        
-            <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-        
-            <input type="submit" value="Submit">
-        
-        </form>
-
+         <form id="contact_form" action="form.php" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <label class="required" for="name">Your name:</label><br />
+              <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+              <span id="name_validation" class="error_message"></span>
+            </div>
+            <div class="row">
+              <label class="required" for="email">Your email:</label><br />
+              <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+              <span id="email_validation" class="error_message"></span>
+            </div>
+            <div class="row">
+              <label class="required" for="message">Your message:</label><br />
+              <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+              <span id="message_validation" class="error_message"></span>
+            </div>
+              
+              <input id="submit_button" type="submit" value="Send email" />
+          </form>
     </div>
 
     </article>
